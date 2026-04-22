@@ -1,0 +1,10 @@
+@use "foundation/all" as *;
+@use "sass:map";
+
+.dse-button-container {
+  background: $btn-primary-bg;
+  border: none;
+  color: $btn-primary-color;
+  display: flex;
+  padding: map.get($spacing, "xxxs");
+}

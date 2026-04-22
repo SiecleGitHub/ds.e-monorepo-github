@@ -1,0 +1,36 @@
+@use "../foundation/variables" as v;
+
+:root {
+  --dse-body-text-color: #{v.$dark};
+  --dse-body-bg-color: #{v.$white};
+
+  --dse-btn-primary-color: #{v.$white};
+  --dse-btn-primary-bg: #{v.$green};
+  --dse-btn-primary-bg-hover: #{v.$green-light};
+
+  --dse-btn-secondary-color: #{v.$white};
+  --dse-btn-secondary-bg: #{v.$dark};
+
+  --dse-form-color: #{v.$dark};
+  --dse-form-bg: #{v.$white};
+  --dse-form-error-color: #{v.$red};
+  --dse-form-error-border: #{v.$red};
+  --dse-form-border-focus-color: #{v.$green};
+
+  --dse-body-font-size: #{v.$fs-base};
+  --dse-body-font-weight: #{v.$fw-normal};
+
+  --dse-h1-font-size: #{v.$h-1};
+  --dse-h2-font-size: #{v.$h-2};
+  --dse-h3-font-size: #{v.$h-3};
+  --dse-h4-font-size: #{v.$h-4};
+  --dse-h5-font-size: #{v.$h-5};
+  --dse-h6-font-size: #{v.$h-6};
+
+  --dse-h1-font-weight: #{v.$fw-medium};
+  --dse-h2-font-weight: #{v.$fw-medium};
+  --dse-h3-font-weight: #{v.$fw-medium};
+  --dse-h4-font-weight: #{v.$fw-normal};
+  --dse-h5-font-weight: #{v.$fw-normal};
+  --dse-h6-font-weight: #{v.$fw-light};
+}

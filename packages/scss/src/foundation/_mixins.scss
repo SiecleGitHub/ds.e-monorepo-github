@@ -1,0 +1,38 @@
+/*=============================================
+=            Mixins                           =
+=============================================*/
+
+/**
+ *
+ * Helpful reusable function-like things that will be used to implement
+ * styles for components.
+ *
+ */
+
+@use "./variables" as v;
+@use "sass:map";
+
+@mixin tablet {
+  @media (min-width: map.get(v.$breakpoints, "md")) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: map.get(v.$breakpoints, "lg")) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: map.get(v.$breakpoints, "xl")) {
+    @content;
+  }
+}
+
+@mixin padding($space) {
+  padding: map.get(v.$spacing, $space);
+}
+@mixin margin($space) {
+  margin: map.get(v.$spacing, $space);
+}

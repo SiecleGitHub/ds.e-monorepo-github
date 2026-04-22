@@ -1,4 +1,6 @@
-<!-- 
+# First problems in project fixed Guide
+
+<!--
 Agent Prompt
 can you make build.js work in this project too please. It is supposed to compile scss to css. However, it fails because I am using an apple arm chip on my mac. This problem is 6 years old and there should be solutions -->
 
@@ -16,9 +18,9 @@ The deprecation warnings you see are normal - they're from Dart Sass warning abo
 
 Your SCSS compilation is now working on ARM Macs! The 6-year-old issue with node-sass on Apple Silicon has been resolved by switching to the official Dart Sass implementation.
 
-<!-- 
+<!--
 Agent Prompt
-You mentioned that you downgraded some dev dependencies due to compatibility with node 14. Now we set node to 22.14.0 as default. Can you upgrade the previously downgraded dev dep again 
+You mentioned that you downgraded some dev dependencies due to compatibility with node 14. Now we set node to 22.14.0 as default. Can you upgrade the previously downgraded dev dep again
 -->
 
 Perfect! I've successfully resolved the dependency upgrade issue. Here's a summary:
@@ -44,19 +46,19 @@ The current setup is optimal - it provides modern, maintained versions of Husky 
 
 Your linting now passes successfully! ✅
 
-<!-- 
+<!--
 Agent Prompt
 can you make the lint process work. I have rules in .stylelintrc.json and scripts in package.json. However, it will not fix the lint problems and therefore I cannot commit anymore as I have husky hooks to prevent the commit in case of lint errors. Can you please fix this problem
  -->
 
- Perfect! I've fixed the lint process. Here's what was wrong and what I did:
+Perfect! I've fixed the lint process. Here's what was wrong and what I did:
 
 Issues Identified and Fixed
 Prettier Compatibility: The stylelint-prettier plugin was incompatible with Prettier v3, causing crashes. I downgraded Prettier to v2.8.8 and adjusted related packages to compatible versions.
 
 Linting Rules: Some rules from stylelint-config-sass-guidelines were too strict (e.g., disallowing border: none). I disabled the declaration-property-value-disallowed-list rule in .stylelintrc.json to allow necessary values.
 
-Code Issues: Fixed a 0rem to 0 in _variables.scss to comply with the length-zero-no-unit rule.
+Code Issues: Fixed a 0rem to 0 in \_variables.scss to comply with the length-zero-no-unit rule.
 
 Husky Setup: Added husky and lint-staged back to package.json with Node 14-compatible versions. The pre-commit hook was already installed and will now run lint-staged, which automatically fixes linting issues on staged SCSS files.
 
@@ -67,7 +69,7 @@ Current Status
 ✅ You can now commit without lint errors blocking you.
 The lint process is fully functional on your ARM Mac. If you encounter any remaining issues, they should be automatically fixable or easily resolvable.
 
-<!-- 
+<!--
 Agent Prompt
-When I run build I get Deprecation Warnings for using @import. Can you fix that issue for all occurences so that there will be no Warnings anymore for a build run. 
+When I run build I get Deprecation Warnings for using @import. Can you fix that issue for all occurences so that there will be no Warnings anymore for a build run.
 -->

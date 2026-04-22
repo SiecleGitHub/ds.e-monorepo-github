@@ -1,6 +1,8 @@
-<!-- 
+# Default node version problem fix Guide
+
+<!--
 Agent Prompt
-I have a nvm installed and several node versions. Unfortunately the oldest version is always the version which is set when I open a new terminal. Can you change this so that the node version v22.14.0 is the node version set when open a new terminal 
+I have a nvm installed and several node versions. Unfortunately the oldest version is always the version which is set when I open a new terminal. Can you change this so that the node version v22.14.0 is the node version set when open a new terminal
 -->
 
 Perfect! I've successfully changed your default Node version to v22.14.0. Here's what I did:

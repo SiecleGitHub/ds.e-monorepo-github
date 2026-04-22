@@ -1,3 +1,5 @@
+# General Project Guide
+
 cd projects
 ~/projects
 

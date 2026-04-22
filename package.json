@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "lerna": "^9.0.7"
+    "husky": "^9.1.7",
+    "lerna": "^9.0.7",
+    "lint-staged": "^16.4.0"
   },
   "private": true,
   "workspaces": {
@@ -16,6 +18,10 @@
     ]
   },
   "scripts": {
-    "build": "yarn lerna run build"
+    "build": "yarn lerna run build",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "packages/scss/**/*.scss": "yarn --cwd packages/scss lint:fix"
   }
 }

@@ -19,7 +19,9 @@
   },
   "scripts": {
     "build": "yarn lerna run build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "stylelint './**/*.scss'",
+    "lint:fix": "yarn lint --fix"
   },
   "lint-staged": {
     "packages/scss/**/*.scss": "yarn --cwd packages/scss lint:fix"

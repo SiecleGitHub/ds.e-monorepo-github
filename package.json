@@ -11,7 +11,8 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "playgrounds/*"
     ],
     "nohoist": [
       "**/normalize-scss"
@@ -25,5 +26,7 @@
   },
   "lint-staged": {
     "packages/scss/**/*.scss": "yarn --cwd packages/scss lint:fix"
-  }
+  },
+  "repository": "git@bitbucket.org:Siecle/ds.e-monorepo.git",
+  "author": "Clemens Sietas <siecle@gmx.de>"
 }

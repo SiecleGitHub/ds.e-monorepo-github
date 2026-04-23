@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "exports": {
+    "./lib/Button.css": "./lib/Button.css",
+    "./lib/Margin.css": "./lib/Margin.css",
+    "./lib/global.css": "./lib/global.css"
+  },
   "dependencies": {
     "normalize-scss": "^8.0.0"
   },

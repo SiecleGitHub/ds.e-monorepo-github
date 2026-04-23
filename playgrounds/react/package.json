@@ -18,5 +18,5 @@
   "scripts": {
     "dev": "parcel src/index.html -p 3000"
   },
-  "private": "true"
+  "private": true
 }

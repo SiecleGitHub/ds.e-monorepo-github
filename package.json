@@ -20,12 +20,13 @@
   },
   "scripts": {
     "build": "yarn lerna run build",
+    "dev": "yarn lerna run dev & yarn --cwd playgrounds/react dev",
     "prepare": "husky install",
     "lint": "stylelint './**/*.scss'",
     "lint:fix": "yarn lint --fix"
   },
   "lint-staged": {
-    "packages/scss/**/*.scss": "yarn --cwd packages/scss lint:fix"
+    "*.md": "echo 'Checking markdown files'"
   },
   "repository": "git@bitbucket.org:Siecle/ds.e-monorepo.git",
   "author": "Clemens Sietas <siecle@gmx.de>"

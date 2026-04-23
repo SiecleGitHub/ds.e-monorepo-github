@@ -14,6 +14,9 @@
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
+    "nodemon": "^3.1.14",
+    "postcss": "^8.4.29",
+    "postcss-scss": "^4.0.10",
     "prettier": "^2.8.8",
     "sass": "^1.77.8",
     "stylelint": "^14.16.1",
@@ -24,9 +27,7 @@
   "scripts": {
     "lint": "stylelint './**/*.scss'",
     "lint:fix": "yarn lint --fix",
-    "build": "node src/scripts/build.js"
-  },
-  "lint-staged": {
-    "*.scss": "yarn lint:fix"
+    "build": "node src/scripts/build.js",
+    "dev": "nodemon --watch src --exec yarn build -e scss"
   }
 }

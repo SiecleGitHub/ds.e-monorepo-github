@@ -11,5 +11,6 @@ const root = createRoot(rootElement);
 root.render(
   <div style={{ padding: '40px' }}>
     <Button label="Example Button" />
+    <Button label="Example Button4" />
   </div>,
 );

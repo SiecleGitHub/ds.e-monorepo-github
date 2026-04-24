@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { Button } from '@ds.e/react';
+import { Button, Color } from '@ds.e/react';
 import '@ds.e/scss/lib/Button.css';
 
 const rootElement = document.querySelector('#root');
@@ -11,6 +11,6 @@ const root = createRoot(rootElement);
 root.render(
   <div style={{ padding: '40px' }}>
     <Button label="Example Button" />
-    <Button label="Example Button4" />
+    <Color hexCode="#000" width="1rem" height="1rem" />
   </div>,
 );

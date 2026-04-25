@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 
 import { Button, Color } from '@ds.e/react';
 import '@ds.e/scss/lib/Button.css';
+import '@ds.e/scss/lib/Utilities.css';
 
 const rootElement = document.querySelector('#root');
 if (!rootElement) throw new Error('Root element not found');
@@ -11,6 +12,8 @@ const root = createRoot(rootElement);
 root.render(
   <div style={{ padding: '40px' }}>
     <Button label="Example Button" />
-    <Color hexCode="#000" width="1rem" height="1rem" />
+    <div style={{ padding: '20px' }}>
+      <Color hexCode="#0000FF" width="lg" height="lg" />
+    </div>
   </div>,
 );

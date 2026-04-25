@@ -1,13 +1,15 @@
 import React from 'react';
+import Spacing from '../../foundation/Spacing';
 
 interface ColorProps {
   hexCode: string;
-  width: string;
-  height: string;
+  width?: keyof typeof Spacing;
+  height?: keyof typeof Spacing;
 }
 
-const Color: React.FunctionComponent<ColorProps> = ({ hexCode, width, height }) => {
-  return <div style={{ backgroundColor: hexCode, width, height }} />;
+const Color: React.FunctionComponent<ColorProps> = ({ hexCode, width = Spacing.sm, height = Spacing.sm }) => {
+  const className = `dse-width-${width} dse-height-${height}`;
+  return <div className={className} style={{ backgroundColor: hexCode }} />;
 };
 
 export default Color;

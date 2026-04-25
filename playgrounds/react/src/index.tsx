@@ -13,7 +13,7 @@ root.render(
   <div style={{ padding: '40px' }}>
     <Button label="Example Button" />
     <div style={{ padding: '20px' }}>
-      <Color hexCode="#0000FF" width="lg" height="lg" />
+      <Color hexCode="#FF00FF" width="lg" height="lg" />
     </div>
   </div>,
 );

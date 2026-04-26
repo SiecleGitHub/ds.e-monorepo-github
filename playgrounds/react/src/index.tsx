@@ -15,10 +15,8 @@ root.render(
     <div style={{ padding: '20px' }}>
       <Color hexCode="#FF00FF" width="lg" height="lg" />
     </div>
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px', display: 'flex' }}>
       <Color hexCode="#0000FF" width="lg" height="lg" />
-    </div>
-    <div style={{ padding: '20px' }}>
       <Text fontSize="lg">This is some Text</Text>
     </div>
   </div>,

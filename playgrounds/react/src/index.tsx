@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { Button, Color } from '@ds.e/react';
+import { Button, Color, Text } from '@ds.e/react';
 import '@ds.e/scss/lib/Button.css';
 import '@ds.e/scss/lib/Utilities.css';
 
@@ -14,6 +14,12 @@ root.render(
     <Button label="Example Button" />
     <div style={{ padding: '20px' }}>
       <Color hexCode="#FF00FF" width="lg" height="lg" />
+    </div>
+    <div style={{ padding: '20px' }}>
+      <Color hexCode="#0000FF" width="lg" height="lg" />
+    </div>
+    <div style={{ padding: '20px' }}>
+      <Text fontSize="lg">This is some Text</Text>
     </div>
   </div>,
 );

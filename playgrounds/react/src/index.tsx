@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { Button, Color, Text, Margin } from '@ds.e/react';
+import { Button, Color, Text, Margin, Select } from '@ds.e/react';
 import '@ds.e/scss/lib/Button.css';
 import '@ds.e/scss/lib/Margin.css';
 import '@ds.e/scss/lib/Utilities.css';
@@ -9,6 +9,11 @@ import '@ds.e/scss/lib/Utilities.css';
 const rootElement = document.querySelector('#root');
 if (!rootElement) throw new Error('Root element not found');
 
+const options = [
+  { value: 'option1', label: 'Option 1' },
+  { value: 'option2', label: 'Option 2' },
+  { value: 'option3', label: 'Option 3' },
+];
 const root = createRoot(rootElement);
 root.render(
   <div style={{ padding: '40px' }}>
@@ -23,5 +28,6 @@ root.render(
     <Margin left space="xl">
       <Text fontSize="xs">This is some Text with Margin</Text>
     </Margin>
+    <Select options={options} />
   </div>,
 );

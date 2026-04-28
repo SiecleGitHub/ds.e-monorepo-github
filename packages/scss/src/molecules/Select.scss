@@ -1,0 +1,20 @@
+@use 'foundation/all' as *;
+@use 'sass:map';
+
+.dse-select {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: map.get($spacing, 'xs');
+    border: 1px solid $white-dark;
+    background: $white;
+
+    font-family: $body-font-family;
+  }
+}

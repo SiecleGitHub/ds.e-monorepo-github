@@ -19,4 +19,18 @@
 
     cursor: pointer;
   }
+
+  &__overlay {
+    @include padding('none');
+    @include margin('none');
+
+    border: 1px solid $form-border-color;
+    background: $form-bg-color;
+    z-index: 99;
+
+    box-shadow: map-get($shadows, 'base');
+
+    position: absolute;
+    width: 100%;
+  }
 }

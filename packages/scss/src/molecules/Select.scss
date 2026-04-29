@@ -12,9 +12,11 @@
     justify-content: space-between;
 
     @include padding('xs');
-    border: 1px solid $white-dark;
-    background: $white;
+    border: 1px solid $form-border-color;
+    background: $form-bg-color;
 
     font-family: $body-font-family;
+
+    cursor: pointer;
   }
 }

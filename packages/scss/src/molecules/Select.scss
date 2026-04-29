@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: space-between;
 
-    padding: map.get($spacing, 'xs');
+    @include padding('xs');
     border: 1px solid $white-dark;
     background: $white;
 

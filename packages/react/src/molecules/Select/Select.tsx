@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+import Text from '../../atoms/Text/Text';
+
 interface SelectOption {
   value: string;
   label: string;
@@ -17,6 +19,7 @@ const Select: React.FC<SelectProps> = ({
   onOptionSelected: handler,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedIndex, setSelectedIndex] = useState<null | number>(null);
   const labelRef = useRef<HTMLButtonElement>(null);
   const [overlayTop, setOverlayTop] = useState<number>(0);
 
@@ -25,6 +28,8 @@ const Select: React.FC<SelectProps> = ({
     if (handler) {
       handler(option, optionIndex);
     }
+    setSelectedIndex(optionIndex);
+    setIsOpen(false);
   };
 
   const onLableClick = () => {
@@ -35,10 +40,15 @@ const Select: React.FC<SelectProps> = ({
     setOverlayTop((labelRef.current?.offsetHeight || 0) + 10);
   }, [labelRef.current?.offsetHeight]);
 
+  let selctedOption = null;
+  if (selectedIndex !== null) {
+    selctedOption = options[selectedIndex];
+  }
+
   return (
     <div className="dse-select">
       <button ref={labelRef} className="dse-select__label" onClick={() => onLableClick()}>
-        <span>{label}</span>
+        <Text>{selctedOption === null ? label : selctedOption.label}</Text>
         <svg
           width="1rem"
           height="1rem"
@@ -56,13 +66,29 @@ const Select: React.FC<SelectProps> = ({
       {isOpen ? (
         <ul style={{ top: overlayTop }} className="dse-select__overlay">
           {options.map((option, optionIndex) => {
+            const isSelected = optionIndex === selectedIndex;
             return (
               <li
-                className="dse-select__option"
+                className={`dse-select__option ${isSelected ? 'dse-select__option--selected' : ''}`}
                 onClick={() => onOptionSelected(option, optionIndex)}
                 key={option.value}
               >
-                {option.label}
+                <Text>{option.label}</Text>
+                {isSelected && (
+                  <svg
+                    width="1rem"
+                    height="1rem"
+                    data-slot="icon"
+                    fill="none"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                )}
               </li>
             );
           })}

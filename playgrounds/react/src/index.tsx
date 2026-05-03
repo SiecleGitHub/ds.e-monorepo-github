@@ -12,10 +12,20 @@ const rootElement = document.querySelector('#root');
 if (!rootElement) throw new Error('Root element not found');
 
 const options = [
-  { value: 'option1', label: 'Option 1' },
-  { value: 'option2', label: 'Option 2' },
-  { value: 'option3', label: 'Option 3' },
+  {
+    label: 'Strict Black',
+    value: 'strict-black',
+  },
+  {
+    label: 'Heavenly Green',
+    value: 'heavenly-green',
+  },
+  {
+    label: 'Sweet Pink',
+    value: 'pink',
+  },
 ];
+
 const root = createRoot(rootElement);
 root.render(
   <div style={{ padding: '40px' }}>

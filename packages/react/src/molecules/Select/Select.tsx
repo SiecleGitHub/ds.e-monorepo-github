@@ -7,16 +7,24 @@ interface SelectOption {
   label: string;
 }
 
+interface RenderOptionProps {
+  isSelected: boolean;
+  selectOption: SelectOption;
+  getOptionRecommendedProps: (overrideProps?: Object) => Object;
+}
+
 interface SelectProps {
   onOptionSelected?: (option: SelectOption, optionIndex: number) => void;
   options?: SelectOption[];
   label?: string;
+  renderOption?: (props: RenderOptionProps) => React.ReactNode;
 }
 
 const Select: React.FC<SelectProps> = ({
   options = [],
   label = 'Please select an option...',
   onOptionSelected: handler,
+  renderOption,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedIndex, setSelectedIndex] = useState<null | number>(null);
@@ -68,6 +76,23 @@ const Select: React.FC<SelectProps> = ({
         <ul style={{ top: overlayTop }} className="dse-select__overlay">
           {options.map((option, optionIndex) => {
             const isSelected = optionIndex === selectedIndex;
+            const renderOptionProps = {
+              isSelected,
+              selectOption: option,
+              getOptionRecommendedProps: (overrideProps = {}) => {
+                return {
+                  className: `dse-select__option
+                                ${isSelected ? 'dse-select__option--selected' : ''}
+                            `,
+                  key: option.value,
+                  onClick: () => onOptionSelected(option, optionIndex),
+                  ...overrideProps,
+                };
+              },
+            };
+            if (renderOption) {
+              return renderOption(renderOptionProps);
+            }
             return (
               <li
                 className={`dse-select__option ${isSelected ? 'dse-select__option--selected' : ''}`}

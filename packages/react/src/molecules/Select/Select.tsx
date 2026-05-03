@@ -50,6 +50,7 @@ const Select: React.FC<SelectProps> = ({
       <button ref={labelRef} className="dse-select__label" onClick={() => onLableClick()}>
         <Text>{selctedOption === null ? label : selctedOption.label}</Text>
         <svg
+          className={`dse-select__caret ${isOpen ? 'dse-select__caret--open' : 'dse-select__caret--closed'}`}
           width="1rem"
           height="1rem"
           data-slot="icon"

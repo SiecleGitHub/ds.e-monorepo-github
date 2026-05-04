@@ -57,7 +57,14 @@ const Select: React.FC<SelectProps> = ({
 
   return (
     <div className="dse-select">
-      <button ref={labelRef} className="dse-select__label" onClick={() => onLableClick()}>
+      <button
+        aria-controls="dse-select-list"
+        aria-haspopup={true}
+        aria-expanded={isOpen ? 'true' : undefined}
+        ref={labelRef}
+        className="dse-select__label"
+        onClick={() => onLableClick()}
+      >
         <Text>{selctedOption === null ? label : selctedOption.label}</Text>
         <svg
           className={`dse-select__caret ${isOpen ? 'dse-select__caret--open' : 'dse-select__caret--closed'}`}
@@ -75,7 +82,7 @@ const Select: React.FC<SelectProps> = ({
         </svg>
       </button>
       {isOpen ? (
-        <ul style={{ top: overlayTop }} className="dse-select__overlay">
+        <ul role="menu" id="dse-select-list" style={{ top: overlayTop }} className="dse-select__overlay">
           {options.map((option, optionIndex) => {
             const isSelected = optionIndex === selectedIndex;
             const renderOptionProps = {

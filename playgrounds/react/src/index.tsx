@@ -15,14 +15,17 @@ const options = [
   {
     label: 'Strict Black',
     value: 'strict-black',
+    'hex-code': '#000000',
   },
   {
     label: 'Heavenly Green',
     value: 'heavenly-green',
+    'hex-code': '#00FF00',
   },
   {
     label: 'Sweet Pink',
     value: 'pink',
+    'hex-code': '#FF00FF',
   },
 ];
 

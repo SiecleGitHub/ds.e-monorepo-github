@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import Text from '../../atoms/Text/Text';
+import Color from '../../atoms/Color/Color';
 
 interface SelectOption {
   value: string;
   label: string;
+  'hex-code'?: string;
 }
 
 interface RenderOptionProps {
@@ -99,7 +101,12 @@ const Select: React.FC<SelectProps> = ({
                 onClick={() => onOptionSelected(option, optionIndex)}
                 key={option.value}
               >
-                <Text>{option.label}</Text>
+                <div style={{ display: 'flex' }}>
+                  <Color hexCode={option['hex-code']} width="lg" height="lg" />
+                  <div style={{ padding: '10px' }}>
+                    <Text>{option.label}</Text>
+                  </div>
+                </div>
                 {isSelected && (
                   <svg
                     width="1rem"

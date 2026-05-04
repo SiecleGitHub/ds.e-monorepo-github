@@ -1,12 +1,14 @@
-import React, { KeyboardEventHandler, useEffect, useRef, useState } from 'react';
+import React, { createRef, KeyboardEventHandler, useEffect, useRef, useState } from 'react';
 
 import Text from '../../atoms/Text/Text';
 import Color from '../../atoms/Color/Color';
 
-const KEY_CODES = {
+export const KEY_CODES = {
   ENTER: 13,
   SPACE: 32,
-  ARROW_DOWN: 40,
+  DOWN_ARROW: 40,
+  ESC: 27,
+  UP_ARROW: 38,
 };
 
 interface SelectOption {
@@ -16,9 +18,12 @@ interface SelectOption {
 }
 
 interface RenderOptionProps {
+  ref?: React.RefObject<HTMLLIElement>;
   isSelected: boolean;
   selectOption: SelectOption;
-  getOptionRecommendedProps: (overrideProps?: Object) => Object;
+  getOptionRecommendedProps: (
+    overrideProps?: React.HTMLAttributes<HTMLLIElement>,
+  ) => React.HTMLAttributes<HTMLLIElement>;
 }
 
 interface SelectProps {
@@ -28,6 +33,30 @@ interface SelectProps {
   renderOption?: (props: RenderOptionProps) => React.ReactNode;
 }
 
+const getPreviousOptionIndex = (currentIndex: number | null, options: Array<SelectOption>) => {
+  if (currentIndex === null) {
+    return 0;
+  }
+
+  if (currentIndex === 0) {
+    return options.length - 1;
+  }
+
+  return currentIndex - 1;
+};
+
+const getNextOptionIndex = (currentIndex: number | null, options: Array<SelectOption>) => {
+  if (currentIndex === null) {
+    return 0;
+  }
+
+  if (currentIndex === options.length - 1) {
+    return 0;
+  }
+
+  return currentIndex + 1;
+};
+
 const Select: React.FC<SelectProps> = ({
   options = [],
   label = 'Please select an option...',
@@ -36,7 +65,9 @@ const Select: React.FC<SelectProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedIndex, setSelectedIndex] = useState<null | number>(null);
+  const [highlightedIndex, setHighlightedIndex] = useState<null | number>(null);
   const labelRef = useRef<HTMLButtonElement>(null);
+  const optionRefs = useRef<React.RefObject<HTMLLIElement>[]>([]);
   const [overlayTop, setOverlayTop] = useState<number>(0);
 
   const onOptionSelected = (option: SelectOption, optionIndex: number) => {
@@ -56,17 +87,61 @@ const Select: React.FC<SelectProps> = ({
     setOverlayTop((labelRef.current?.offsetHeight || 0) + 10);
   }, [labelRef.current?.offsetHeight]);
 
+  useEffect(() => {
+    optionRefs.current = options.map((_, index) => optionRefs.current[index] ?? createRef<HTMLLIElement>());
+  }, [options]);
+
   let selctedOption = null;
   if (selectedIndex !== null) {
     selctedOption = options[selectedIndex];
   }
 
+  const highlightOption = (optionIndex: number | null) => {
+    setHighlightedIndex(optionIndex);
+  };
+
   const onButtonKeyDown: KeyboardEventHandler = (event) => {
     event.preventDefault();
-    if ([KEY_CODES.ARROW_DOWN, KEY_CODES.ENTER, KEY_CODES.SPACE].includes(event.keyCode)) {
+
+    if ([KEY_CODES.ENTER, KEY_CODES.SPACE, KEY_CODES.DOWN_ARROW].includes(event.keyCode)) {
       setIsOpen(true);
+
+      // set focus on the list item
+      highlightOption(0);
     }
   };
+
+  useEffect(() => {
+    if (highlightedIndex !== null && isOpen) {
+      const ref = optionRefs.current[highlightedIndex];
+
+      if (ref && ref.current) {
+        ref.current.focus();
+      }
+    }
+  }, [isOpen, highlightedIndex]);
+
+  const onOptionKeyDown: KeyboardEventHandler = (event) => {
+    if (event.keyCode === KEY_CODES.ESC) {
+      setIsOpen(false);
+
+      return;
+    }
+
+    if (event.keyCode === KEY_CODES.DOWN_ARROW) {
+      highlightOption(getNextOptionIndex(highlightedIndex, options));
+    }
+
+    if (event.keyCode === KEY_CODES.UP_ARROW) {
+      highlightOption(getPreviousOptionIndex(highlightedIndex, options));
+    }
+
+    if (event.keyCode === KEY_CODES.ENTER) {
+      onOptionSelected(options[highlightedIndex!], highlightedIndex!);
+    }
+  };
+
+  //console.log(optionRefs.current);
 
   return (
     <div className="dse-select">
@@ -99,13 +174,27 @@ const Select: React.FC<SelectProps> = ({
         <ul role="menu" id="dse-select-list" style={{ top: overlayTop }} className="dse-select__overlay">
           {options.map((option, optionIndex) => {
             const isSelected = optionIndex === selectedIndex;
+            const isHighlighted = highlightedIndex === optionIndex;
+
+            const ref = optionRefs.current[optionIndex];
+
             const renderOptionProps = {
-              isSelected,
+              ref,
               selectOption: option,
+              isSelected,
               getOptionRecommendedProps: (overrideProps = {}) => {
                 return {
+                  ref,
+                  role: 'menuitemradio',
+                  'aria-label': option.label,
+                  'aria-checked': isSelected ? true : undefined,
+                  onKeyDown: onOptionKeyDown,
+                  tabIndex: isHighlighted ? -1 : 0,
+                  onMouseEnter: () => highlightOption(optionIndex),
+                  onMouseLeave: () => highlightOption(null),
                   className: `dse-select__option
                                 ${isSelected ? 'dse-select__option--selected' : ''}
+                                ${isHighlighted ? 'dse-select__option--highlighted' : ''}
                             `,
                   key: option.value,
                   onClick: () => onOptionSelected(option, optionIndex),
@@ -117,11 +206,7 @@ const Select: React.FC<SelectProps> = ({
               return renderOption(renderOptionProps);
             }
             return (
-              <li
-                className={`dse-select__option ${isSelected ? 'dse-select__option--selected' : ''}`}
-                onClick={() => onOptionSelected(option, optionIndex)}
-                key={option.value}
-              >
+              <li {...renderOptionProps.getOptionRecommendedProps()}>
                 <div style={{ display: 'flex' }}>
                   <Color hexCode={option['hex-code']} width="lg" height="lg" />
                   <div style={{ padding: '10px' }}>

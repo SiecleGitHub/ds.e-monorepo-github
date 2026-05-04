@@ -1,7 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { KeyboardEventHandler, useEffect, useRef, useState } from 'react';
 
 import Text from '../../atoms/Text/Text';
 import Color from '../../atoms/Color/Color';
+
+const KEY_CODES = {
+  ENTER: 13,
+  SPACE: 32,
+  ARROW_DOWN: 40,
+};
 
 interface SelectOption {
   value: string;
@@ -55,9 +61,17 @@ const Select: React.FC<SelectProps> = ({
     selctedOption = options[selectedIndex];
   }
 
+  const onButtonKeyDown: KeyboardEventHandler = (event) => {
+    event.preventDefault();
+    if ([KEY_CODES.ARROW_DOWN, KEY_CODES.ENTER, KEY_CODES.SPACE].includes(event.keyCode)) {
+      setIsOpen(true);
+    }
+  };
+
   return (
     <div className="dse-select">
       <button
+        onKeyDown={onButtonKeyDown}
         aria-controls="dse-select-list"
         aria-haspopup={true}
         aria-expanded={isOpen ? 'true' : undefined}

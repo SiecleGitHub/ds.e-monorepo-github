@@ -36,10 +36,10 @@ root.render(
     <div style={{ padding: '20px', display: 'flex' }}>
       <Color hexCode="#0000FF" width="lg" height="lg" />
       <Text fontSize="lg">This is some Text</Text>
+      <Margin left space="xl">
+        <Text fontSize="xs">This is some Text with Margin</Text>
+      </Margin>
     </div>
     <Select options={options} />
-    <Margin left space="xl">
-      <Text fontSize="xs">This is some Text with Margin</Text>
-    </Margin>
   </div>,
 );

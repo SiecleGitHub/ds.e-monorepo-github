@@ -30,10 +30,11 @@ test('renders options using custom renderOption method if passed as prop', () =>
   const { getAllByTestId, getByTestId } = render(
     <Select
       options={options}
-      renderOption={({ option, getOptionRecommendedProps }) => {
+      renderOption={({ selectOption, getOptionRecommendedProps }) => {
+        // Hier geändert
         return (
           <li data-testid="CustomRenderOption" {...getOptionRecommendedProps()}>
-            {option.label}
+            {selectOption.label} {/* Und hier genutzt */}
           </li>
         );
       }}

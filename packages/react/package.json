@@ -8,13 +8,24 @@
     "react": "^19.0.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.29.3",
+    "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/jest": "^30.0.0",
     "@types/react": "^19.2.14",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0",
     "rollup": "^4.60.2",
     "rollup-plugin-typescript2": "^0.37.0",
     "typescript": "^6.0.3"
   },
   "scripts": {
     "build": "rollup -c",
-    "dev": "yarn build --watch"
+    "dev": "yarn build --watch",
+    "test": "jest --verbose",
+    "test:watch": "yarn test --watch"
   }
 }

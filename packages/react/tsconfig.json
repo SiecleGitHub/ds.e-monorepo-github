@@ -2,6 +2,7 @@
   "compilerOptions": {
     "outDir": "lib",
     "module": "esnext",
+    "types": ["jest", "@testing-library/jest-dom", "node"],
     "lib": ["DOM", "ESNext"],
     "jsx": "react",
     "allowSyntheticDefaultImports": true,

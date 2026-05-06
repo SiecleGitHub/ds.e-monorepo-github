@@ -79,3 +79,5 @@ temp/
 
 # Lerna
 lerna-debug.log*
+*storybook.log
+storybook-static

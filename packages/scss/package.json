@@ -6,6 +6,8 @@
   "exports": {
     "./lib/Button.css": "./lib/Button.css",
     "./lib/Margin.css": "./lib/Margin.css",
+    "./lib/Select.css": "./lib/Select.css",
+    "./lib/Utilities.css": "./lib/Utilities.css",
     "./lib/global.css": "./lib/global.css"
   },
   "dependencies": {

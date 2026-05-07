@@ -1,6 +1,13 @@
 import React from 'react';
 import Select from './Select';
 
+// @ts-ignore
+import './Select.css';
+// @ts-ignore
+import './Utilities.css';
+// @ts-ignore
+import './global.css';
+
 // css
 
 const options = [

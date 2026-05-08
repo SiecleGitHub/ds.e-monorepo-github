@@ -24,19 +24,15 @@ const config: StorybookConfig = {
     const { mergeConfig } = await import('vite');
 
     return mergeConfig(config, {
+      resolve: {
+        alias: {
+          '@ds.e/scss': getAbsolutePath('@ds.e/scss'),
+          '@ds.e/foundation': getAbsolutePath('@ds.e/foundation'),
+        },
+      },
       css: {
         modules: {
           localsConvention: 'camelCase',
-        },
-      },
-      build: {
-        rollupOptions: {
-          external: [
-            '@ds.e/scss/lib/Select.css',
-            '@ds.e/scss/lib/Utilities.css',
-            '@ds.e/scss/lib/global.css',
-            '@ds.e/foundation',
-          ],
         },
       },
     });

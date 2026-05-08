@@ -1,9 +1,9 @@
 import React from 'react';
 import Select from './Select';
 
-import '../../../scss/lib/Select.css';
-import '../../../scss/lib/Utilities.css';
-import '../../../scss/lib/global.css';
+import '@ds.e/scss/lib/Select.css';
+import '@ds.e/scss/lib/Utilities.css';
+import '@ds.e/scss/lib/global.css';
 
 // css
 

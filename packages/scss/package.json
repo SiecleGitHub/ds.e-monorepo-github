@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "exports": {
+    "./package.json": "./package.json",
     "./lib/Button.css": "./lib/Button.css",
     "./lib/Margin.css": "./lib/Margin.css",
     "./lib/Select.css": "./lib/Select.css",

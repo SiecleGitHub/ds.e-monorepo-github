@@ -29,6 +29,11 @@ const config: StorybookConfig = {
           localsConvention: 'camelCase',
         },
       },
+      build: {
+        rollupOptions: {
+          external: ['@ds.e/scss/lib/Select.css', '@ds.e/scss/lib/Utilities.css', '@ds.e/scss/lib/global.css'],
+        },
+      },
     });
   },
 };

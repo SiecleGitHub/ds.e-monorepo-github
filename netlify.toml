@@ -1,4 +1,5 @@
 [build]
+  base = "/"
   command = "yarn build-storybook"
   publish = "packages/react/storybook-static"
 

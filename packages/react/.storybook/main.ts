@@ -26,7 +26,7 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       resolve: {
         alias: {
-          '@ds.e/scss': resolve(dirname(fileURLToPath(import.meta.url)), '../../../packages/scss'),
+          '@ds.e/scss': resolve(process.cwd(), 'packages/scss'),
         },
       },
       css: {

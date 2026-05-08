@@ -26,8 +26,8 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       resolve: {
         alias: {
-          '@ds.e/scss': process.cwd() + '/packages/scss',
-          '@ds.e/foundation': process.cwd() + '/packages/foundation',
+          '@ds.e/scss': '/opt/build/repo/packages/scss',
+          '@ds.e/foundation': '/opt/build/repo/packages/foundation',
         },
       },
       css: {

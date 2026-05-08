@@ -27,6 +27,7 @@ const config: StorybookConfig = {
       resolve: {
         alias: {
           '@ds.e/scss': '/opt/build/repo/packages/scss',
+          '@ds.e/foundation': '/opt/build/repo/packages/foundation',
         },
       },
       css: {

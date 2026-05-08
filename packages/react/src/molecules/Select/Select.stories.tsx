@@ -1,10 +1,9 @@
 import React from 'react';
 import Select from './Select';
 
-// CSS imports temporarily removed for deployment testing
-// import '@ds.e/scss/lib/Select.css';
-// import '@ds.e/scss/lib/Utilities.css';
-// import '@ds.e/scss/lib/global.css';
+import '@ds.e/scss/lib/Select.css';
+import '@ds.e/scss/lib/Utilities.css';
+import '@ds.e/scss/lib/global.css';
 
 // css
 

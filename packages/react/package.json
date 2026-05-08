@@ -38,6 +38,7 @@
     "test": "jest --verbose",
     "test:watch": "yarn test --watch",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "copy-assets": "node copy-assets.js",
+    "build-storybook": "yarn copy-assets && storybook build"
   }
 }

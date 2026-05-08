@@ -24,6 +24,11 @@ const config: StorybookConfig = {
     const { mergeConfig } = await import('vite');
 
     return mergeConfig(config, {
+      resolve: {
+        alias: {
+          '@ds.e/scss': '../../../scss',
+        },
+      },
       css: {
         modules: {
           localsConvention: 'camelCase',

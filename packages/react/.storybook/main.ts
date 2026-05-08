@@ -31,7 +31,12 @@ const config: StorybookConfig = {
       },
       build: {
         rollupOptions: {
-          external: ['@ds.e/scss/lib/Select.css', '@ds.e/scss/lib/Utilities.css', '@ds.e/scss/lib/global.css'],
+          external: [
+            '@ds.e/scss/lib/Select.css',
+            '@ds.e/scss/lib/Utilities.css',
+            '@ds.e/scss/lib/global.css',
+            '@ds.e/foundation',
+          ],
         },
       },
     });

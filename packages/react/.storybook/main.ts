@@ -1,6 +1,6 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 
-import { dirname } from 'path';
+import { dirname, resolve } from 'path';
 
 import { fileURLToPath } from 'url';
 
@@ -22,12 +22,11 @@ const config: StorybookConfig = {
   framework: getAbsolutePath('@storybook/react-vite'),
   viteFinal: async (config) => {
     const { mergeConfig } = await import('vite');
-    const path = await import('path');
 
     return mergeConfig(config, {
       resolve: {
         alias: {
-          '@ds.e/scss': path.resolve(__dirname, '../../../scss'),
+          '@ds.e/scss': resolve(dirname(fileURLToPath(import.meta.url)), '../../../scss'),
         },
       },
       css: {

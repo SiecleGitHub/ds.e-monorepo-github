@@ -4,6 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "husky": "^9.1.7",
     "lerna": "^9.0.7",
     "lint-staged": "^16.4.0"
@@ -21,6 +23,7 @@
   "scripts": {
     "build": "yarn lerna run build",
     "dev": "yarn lerna run dev & yarn --cwd playgrounds/react dev",
+    "commit": "yarn git-cz",
     "prepare": "husky install",
     "lint": "stylelint './**/*.scss'",
     "lint:fix": "yarn lint --fix"
@@ -28,6 +31,11 @@
   "lint-staged": {
     "*.md": "echo 'Checking markdown files'"
   },
-  "repository": "git@bitbucket.org:Siecle/ds.e-monorepo.git",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "repository": "git@github.com:Siecle/ds.e-monorepo.git",
   "author": "Clemens Sietas <siecle@gmx.de>"
 }

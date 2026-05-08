@@ -26,7 +26,8 @@
     "commit": "yarn git-cz",
     "prepare": "husky install",
     "lint": "stylelint './**/*.scss'",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "test": "yarn lerna run test"
   },
   "lint-staged": {
     "*.md": "echo 'Checking markdown files'"
